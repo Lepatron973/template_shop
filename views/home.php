@@ -30,13 +30,13 @@
 
     <!-- start first article -->
     <section class="first_banner">
-    salut
+        <h3 class="text-center">{{Nouveauté}}</h3>
     </section>
     <!-- end first article -->
 
     <!-- start second article -->
     <section class="second_banner">
-    salut
+    <h3 class="text-center">{{Top Tendance}}</h3>
     </section>
     <!-- end second article -->
 

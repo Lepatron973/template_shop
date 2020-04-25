@@ -1,0 +1,15 @@
+.footer{
+    height: 6%;
+    background-color: darkslategray;
+}
+.footer p{
+    color: wheat;;
+}
+@media screen and (max-width: 600px){
+    .footer{
+        height: 8%;
+    }
+    .footer p{
+        font-size: 13px;
+    }
+}
