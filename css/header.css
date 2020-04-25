@@ -1,0 +1,113 @@
+li{
+    list-style: none;
+}
+.navbar_header{
+    display: flex;
+    justify-content: space-around;
+    background-color: whitesmoke;
+    padding: 10px;
+    width: 100%;
+}
+
+.header_item{
+    margin-right: 10px;
+}
+
+.mobile{
+    display: none !important;
+}
+body,html{
+    margin: auto;
+    height: 100vh;
+}
+a{
+    color: black;
+}
+.header{
+    height: 6%;
+}
+/* start section animation */
+@keyframes slide{
+    from{
+        right: -30%;
+        opacity: 0;
+    }
+    to{
+        right:0px;
+        opacity: 1;
+    }
+}
+
+@keyframes slideBack{
+    from{
+        right: 0px; 
+        opacity: 1;
+    }
+    to{
+        right: -30%;
+        opacity: 0;
+    }
+}
+@keyframes pagePush{
+    from{
+        width: 100%;
+    }
+    to{
+        width: 70%;
+        transform: skew( 6deg, 10deg) scale(0.8);
+    }
+}
+
+@keyframes pagePushBack{
+    from{
+        width: 70%;
+        transform: skew( 6deg, 10deg) scale(0.8);
+    }
+    to{
+        width: 100%;
+        transform: skew( 0deg, 0deg) scale(1);
+    }
+}
+/* end section animation */
+
+/* mobile display */
+@media screen and (max-width: 600px){
+
+    .desktop{
+        display: none !important;
+    }
+    .mobile{
+        display:  block  !important;
+    }
+    .head_nav{
+        display: flex;
+    }
+    
+    .side_bar{
+        position: absolute;
+        right: -30%;
+        height: 100%;
+        background-color: teal;
+        width: 30%;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .side_bar li{
+        margin: 10px;
+    }
+    .slide{
+        animation: slide 1s linear  forwards;
+    }
+    
+    .pagePush{
+        animation: pagePush 1s linear  forwards;
+    }
+    .slideBack{
+        animation: slideBack 1s linear  forwards;
+    }
+    
+    .pagePushBack{
+        animation: pagePushBack 1s linear  forwards;
+    }
+}

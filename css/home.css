@@ -1,0 +1,14 @@
+.slider{
+    height: 45%;
+    background-color: bisque;
+}
+.home{
+    height: 94%;
+}
+
+@media screen and (max-width: 600px){
+    .slider{
+        height: 35%;
+        background-color: bisque;
+    }  
+}
