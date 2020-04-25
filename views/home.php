@@ -1,5 +1,5 @@
 <div class="home">
-
+    <!-- start section caroussel -->
     <section id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
        <ol class="carousel-indicators">
            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -26,9 +26,18 @@
                <span class="sr-only">Next</span>
            </a>
     </section>
-    <section>
+    <!-- end section caroussel -->
+
+    <!-- start first article -->
+    <section class="first_banner">
     salut
     </section>
-   
+    <!-- end first article -->
+
+    <!-- start second article -->
+    <section class="second_banner">
+    salut
+    </section>
+    <!-- end second article -->
 
 </div>

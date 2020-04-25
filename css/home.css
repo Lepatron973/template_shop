@@ -10,4 +10,12 @@
     .carousel-inner img{
         height: 200px;
      }
+    .first_banner{
+        height: 250px;
+        background-color: blueviolet;
+    }
+    .second_banner{
+        height:200px;
+        background-color: bisque;
+    }
 }
