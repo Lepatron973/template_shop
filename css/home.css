@@ -1,14 +1,13 @@
-.slider{
-    height: 45%;
-    background-color: bisque;
-}
 .home{
     height: 94%;
 }
+.carousel-inner img{
+   height: 350px;
+}
 
 @media screen and (max-width: 600px){
-    .slider{
-        height: 35%;
-        background-color: bisque;
-    }  
+    
+    .carousel-inner img{
+        height: 200px;
+     }
 }
