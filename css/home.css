@@ -1,18 +1,18 @@
 .home{
-    height: 95%;
+    min-height: 95%;
+
 }
 .carousel-inner img{
    height: 350px;
 }
 .first_banner{
-    height:25%;
-    background-color: blueviolet;
+    /* height:25%; */
+    /* background-color: blueviolet; */
 }
 .second_banner{
-    height:25%;
-    background-color: bisque;
+    /* height:25%; */
+    /* background-color: bisque; */
 }
-
 
 @media screen and (max-width: 600px){
     
@@ -20,11 +20,14 @@
         height: 200px;
      }
     .first_banner{
-        height:30%;
-        background-color: blueviolet;
+        /* height:30%; */
+        
     }
     .second_banner{
-        height:40%;
-        background-color: bisque;
+        /* height:40%; */
+        
+    }
+    .article_1 article{
+        /* height: 150px; */
     }
 }

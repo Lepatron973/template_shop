@@ -1,7 +1,7 @@
-<div class="d-flex header">
+<div class="d-flex header fixed-top">
 
-    <nav class="navbar_header">
-        <div class="header_logo">logo</div>
+    <nav class="navbar_header ">
+        <div class="header_logo"><img src="https://cdn.worldvectorlogo.com/logos/credit-immobilier-de-france.svg" alt=""></div>
         <ul class="head_nav d-flex desktop">
             <li class="header_item"><a href="">Home</a></li>
             <li class="header_item"><a href="">Boutique</a></li>
