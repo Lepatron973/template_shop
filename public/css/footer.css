@@ -1,5 +1,6 @@
 .footer{
     /* height: 6%; */
+    display: block;
     background-color: darkslategray;
 }
 .footer p{

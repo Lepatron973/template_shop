@@ -19,16 +19,11 @@ li{
 .mobile{
     display: none !important;
 }
-body,html{
-    margin: auto;
-    height: 100vh;
-}
+
 a{
     color: black;
 }
-.header{
-    height: 6%;
-}
+
 /* start section animation */
 @keyframes slide{
     from{
@@ -57,7 +52,7 @@ a{
     }
     to{
         width: 70%;
-        /* transform: skew( 6deg, 10deg) scale(0.8); */
+        transform: skew( 6deg, 10deg) scale(0.8);
     }
 }
 

@@ -1,0 +1,17 @@
+body,html{
+    margin: auto;
+    height: 100%;
+}
+.header{
+    height: 6%;
+}
+.content{
+    position: relative;
+    top: 6%;
+    padding-bottom: 2%;
+    min-height: 93%;
+}
+.footer{
+    position: relative;
+    top: 4%;
+}
