@@ -24,7 +24,7 @@
                     ShopController::Detail();
                     break;
                 case 'admin':
-                    AdminController::Admin($this->getPost());
+                    header("Location: /admin");
                     break;
                 
                 default:

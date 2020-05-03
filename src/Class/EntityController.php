@@ -19,21 +19,22 @@ abstract class EntityController{
     /**
      * @var string $table
      */
-    public function findAll(string $table = "user"):object
+    public function findAll(string $table):array
     {
         
         $pdo = $this->connexion();
         $req = $pdo->prepare("SELECT * FROM $table");
         
        
-        if($req->execute() && $req->rowCount() != 0){
-            $value = $req->fetch(\PDO::FETCH_OBJ);
-            
-        }else{
-            $value = new \stdClass();
-        }
-        return $value;
-         
+           if($req->execute() && $req->rowCount() != 0){
+               $value = $req->fetchAll();
+               
+           }else{
+               $value = array();
+           }
+           return $value;
+           //code...
+       
     }
     
 }
