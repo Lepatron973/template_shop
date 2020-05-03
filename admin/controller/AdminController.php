@@ -17,48 +17,51 @@
     class AdminController{
         
         /**
-         * Main fonction de la classe admin
+         * Fonction principale de la classe AdminController
+         * 
          */
-        static function Admin($post=null){
+        static function Admin(Array $post=[]){
             
             
-            if( $post["edit"]){
-                
-                $post = self::associativeArrayFormat($post);
-                foreach( $post as $key => $value){
-                    if (\substr($key,0,2) == "id") {
-                       $post[$key] =  \intval($value);
-                    }
-                }
-                $managers = self::loadFunction($post);
-                
-                var_dump($post);
-                
-            }
-            elseif($post["delete"]){
-                var_dump($post['delete']['id_slider']);
-                $post['delete']['id_slider'] = \intval($post['delete']['id_slider']);
-                $managers = self::loadFunction($post['delete']);
-            }
-            
-            elseif($post["ajax_request"]){
+            switch($post["action"]){
 
-                $managers = self::loadFunction($post);
+                case 'add/edit':
+                    $post = $post['edit'];
+                    //$post = self::associativeArrayFormat($post);
+                    foreach( $post as $key => $value){
+                        if (\substr($key,0,2) == "id") {
+                        $post[$key] =  \intval($value);
+                        }
+                    }
+                    $managers = self::loadFunction($post);
+                    var_dump($post);
+                break;
                 
-                echo json_encode($managers);
+            
+                case 'delete':
+                    var_dump($post['delete']['id_slider']);
+                    $post['delete']['id_slider'] = \intval($post['delete']['id_slider']);
+                    $managers = self::loadFunction($post['delete']);
+                break;
+            
+            
+                case 'getManager':
+                    $managers = self::loadFunction($post);
+                    echo json_encode($managers);
+                break;
                 
                 
-            }
-            else {
-                $managers = self::loadFunction($post);
-                require_once DIR.'/admin/templates/base_admin.php';
+                default:
+                    $managers = self::loadFunction($post);
+                    require_once DIR.'/admin/templates/base_admin.php';
+                break;
                 
             }
             
         }
           
         
-        private function loadFunction(array $post)
+        private function loadFunction(array $post): Array
         {
             switch ($post['class']) {
                 case 'add_slider':

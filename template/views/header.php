@@ -6,6 +6,7 @@
             <li class="header_item"><a href="?path=home">Home</a></li>
             <li class="header_item"><a href="?path=shop">Boutique</a></li>
             <li class="header_item"><a href="?path=account">Compte</a></li>
+            <li class="header_item"><a href="?path=admin">Admin</a></li>
             <li class="header_item"><a href="?path=account"><i class="fas fa-user"></i></a></li>
             <li class="header_item"><a href="?path=cart"><i class="fas fa-cart-plus"></i></a></li>
         </ul>

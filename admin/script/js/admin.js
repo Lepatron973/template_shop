@@ -1,13 +1,18 @@
 $(function(){
     const $app = $('#app');
-    let view = "home_admin";
-    loadView(view);
-    
-    
+    loadView();
     
     
     $("a").on('click',pathLoader)
 
+
+    /**
+     * Cette petite fonction appelle la fonction loadView()
+     * avec deux paramètres 
+     * @param {event} e.currentTarget.attr('name') - nom de la page
+     * @param {event} e.currentTarget.attr('index') - index ou id de la cible
+     * @param {event} e - evénement "click" 
+     */
     function pathLoader(e){
         e.preventDefault();
         e.stopPropagation();
@@ -16,8 +21,12 @@ $(function(){
         loadView($(e.currentTarget).attr('name'),$(e.currentTarget).attr('index'));
     }
     
-    //function permettant l'affichage de différente vue
-    function loadView(view='home_admin',index=null){
+    /**
+     * function permettant l'affichage de différentes vues
+     * @param {string} [view=home_admin] - page à afficher
+     * @param {(string|null)} [index=null] - index de la cible dans le manager
+     */
+    function loadView(view="home_admin",index=null){
         
         $.ajax({
             url:'templates/views/'+view+'.php',
@@ -28,29 +37,44 @@ $(function(){
                 data = await loadData();
                 
                 $app.html(result)
-                displayHome()
+                displayHome(data)
                 /*
-                *j'attribue une destination ici car la variable global DIR php déclarer au niveau de l'index
-                *à la racine du site n'est pas pris en compte dans les vues appeler par la requête ajax
+                ** j'attribue une destination ici car la variable global DIR php déclarer au niveau de l'index
+                ** à la racine du site n'est pas pris en compte dans les vues appellé par la requête ajax
                 */
                 $("form").attr('action',window.location.pathname)
 
-                /**
-                 * passage de la submission du formulaire au js et non au php
+                /*
+                 ** passage de la submission du formulaire au js et non au php
                  */
                 $("form").on("submit",function(e){ 
                     e.preventDefault();
-                    let post= [];
+                    let post= {};
                    
                     $('input').each(function(){
-                        
+                       
+                        /**
+                         * Insertion des différente valeurs du formulaire
+                         * dans la tableau post[].
+                         */
                         post[$(this).attr('name')] = $(this).val();
                     })
-                   
-                    editData($(this).serialize())
-                        
+                    
+                    
+                   /*
+                   ** sérialization des valeurs issues du formulaire
+                   ** en une seule chaîne de charactère afin qu'elle
+                   ** soit accepté lors de la soumission de la requête
+                   ** ajax.
+                   */
+                    editData(post)
+                    console.log(post)
                    
                  })
+                 /*
+                 ** Insertion des différente valeurs issues de la BDD
+                 ** Dans les champs de text pour les pages d'éditions
+                 */
                  $('#form_edit_slider input').each(function(i){
                    
                      if (data.homeManager.slider[index][i] != undefined) {
@@ -63,13 +87,19 @@ $(function(){
                 console.log(error)
             },
             complete:function(){     
-                loadData();
+               
             }
     
         })
     
     }
 
+    /**
+     * Cette fonction permet de récupérer les Managers depuis la
+     * page index.php. Les managers sont des objets permettant 
+     * d'intéragir avec la base de donnée et donc de faire persisté
+     * les changement établient par l'administration
+     */
     function loadData(){
        return new Promise(resolve=>{
             resolve(
@@ -77,7 +107,7 @@ $(function(){
                 $.ajax({
                     
                     url:'index.php',
-                    data:'ajax_request='+true,
+                    data:{'action':'getManager'},
                     type:'POST',
                     dataType:'json',
                     success: function(data){
@@ -91,49 +121,66 @@ $(function(){
         })
     }
 
-    function inserData(){
+    /**
+     * Cette fonction permet l'insertion de donnée
+     * dans la BDD.
+     * @param {Array} post - tableau issue d'un formulaire
+     */
+    function inserData(post){
         
     }
+    /**
+     * Cette fonction permet la création ou la modification d'un élément.
+     * @param {array} post - tableau issue d'un formulaire
+     */
     function editData(post){
-        
-        post = post.split("=").join(":")
-        post = post.split("&").join(":")
-        
-        
-       
-        console.log(post)
-        // console.log(JSON.stringify(post))
-        // console.log(JSON.parse(JSON.stringify(post)))
+        /*
+        ** formatage de la chaîne sérializer pour la transmission
+        ** lors de la récupération en php il sera plus
+        ** facile de le transformer en tableau associatif
+        */
+        // post = post.split("=").join(":")
+        // post = post.split("&").join(":")
         
         $.ajax({
 
             url:'index.php',
-            data:{'edit': post},
+            data:{'edit': post,'action':'add/edit'},
             type:'POST',
             success: function(data){
                 loadView();
             }
         })
     }
+
+    /**
+     * Cette fonction permet de supprimer
+     * l'élément sélectionner
+     * @param {event} e - evenement "click"
+     */
     function delData(e){
         e.preventDefault()
         let post = {};
         post['class'] = "delete_slider";
         post['id_slider'] = parseInt($(this).attr('index'))
-        console.log(post)
         $.ajax({
 
             url:'index.php',
-            data:{'delete': post},
+            data:{'delete': post,'action':'delete'},
             type:'POST',
             success: function(data){
                 loadView();
             }
         })
     }
-    async function displayHome(){
+    /**
+     * Fonction asynchrone permettant d'afficher la navigation
+     * de la page "home admin". Elle crée des liens de navigations
+     * lié à différente fonction d'administration (edit,del) 
+     */
+    async function displayHome(data){
          
-        data = await loadData();
+        
         let slider = data.homeManager.slider;
         let i =0;
         $("#slider_list ul").html("");
@@ -159,15 +206,4 @@ $(function(){
 
     }
 
-    function associativeArrayFormat(array){
-        arrayFormated = [];
-        let i=0;
-        let test = []
-       while(i< array.length){
-            arrayFormated[array[i]] = array[i+1];
-            
-            i+=2;
-        }
-        return arrayFormated;
-    }
 })

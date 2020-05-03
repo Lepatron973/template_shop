@@ -1,22 +1,18 @@
-<?php ob_start() ;?>
+<?php ob_start();?>
 <div class="home">
     <!-- start section caroussel -->
     <section id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
        <ol class="carousel-indicators">
-           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+       <?php $i=0; foreach($homeManager->slider as $slider){ $indicatorActive = $i == 0 ? "active" : ""; ?>
+           <li data-target="#carouselExampleIndicators" data-slide-to="<?= $i ?>" class="<?= $indicatorActive?>"></li>
+        <?php $i++; }?>
        </ol>
        <div class="carousel-inner">
-           <div class="carousel-item active">
-               <img class="d-block w-100" src="https://source.unsplash.com/EbuaKnSm8Zw/800x533" alt="First slide">
+            <?php $i=0; foreach($homeManager->slider as $slider){ $sliderActive = $i == 0 ? "active" : ""; ?>
+           <div class="carousel-item <?= $sliderActive?>">
+               <img class="d-block w-100" src="<?= $slider['image_slider'] ?>" alt="<?= $slider['title_slider'] ?>">
            </div>
-           <div class="carousel-item">
-               <img class="d-block w-100" src="https://source.unsplash.com/kG38b7CFzTY/800x533" alt="Second slide">
-           </div>
-           <div class="carousel-item">
-               <img class="d-block w-100" src="https://source.unsplash.com/nvzvOPQW0gc/800x533" alt="Third slide">
-           </div>
+            <?php $i++; }?>
        </div>
            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                <span class="carousel-control-prev-icon" aria-hidden="true"></span>

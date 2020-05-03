@@ -24,7 +24,7 @@
                     ShopController::Detail();
                     break;
                 case 'admin':
-                    header("Location: /admin");
+                    header("Location: admin");
                     break;
                 
                 default:
