@@ -61,11 +61,7 @@
         }
 
         public function insertBanner($post){
-<<<<<<< HEAD
-            $sql = "INSERT INTO banner (section,title_banner,image_banner, description_banner, subtitle_banner) VALUES (?,?,?,?,?)";
-=======
             $sql = "INSERT INTO banner (section_banner,title_banner,image_banner, description_banner, subtitle_banner, image_title_banner) VALUES (?,?,?,?,?,?)";
->>>>>>> front
             $req = $this->pdo->prepare($sql);
             $req->bindValue(1,$post['section'],\PDO::PARAM_STR);
             $req->bindValue(2,$post['title_banner'],\PDO::PARAM_STR);
