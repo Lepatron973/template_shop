@@ -1,4 +1,4 @@
-<form action="/<?=basename(DIR)?>/" method="post"> 
+<form action="" method="post"> 
     <div class="form-group">
         <label for="">Titre du produit</label>
         <input type="text" class="form-control" name="name_product">
@@ -23,5 +23,5 @@
     </div>
     <input type="hidden" name="path" value="admin">
     <input type="hidden" name="class" value="add_product">
-    <button type="submit" class="btn btn-primary">valider</button>
+    <button type="submit" class="btn btn-success">ajouter</button>
 </form>

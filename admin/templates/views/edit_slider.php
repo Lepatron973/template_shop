@@ -1,5 +1,5 @@
 <h2 class="text-center">Edit Slider</h2>
-<form action="" method="post" id="form_edit_slider">
+<form action="" method="post" class="form_edit">
 <input type="hidden" name="id_slider" value="">
     <div class="form-group">
         <label for=" title_slider">title slider</label>
@@ -11,5 +11,5 @@
     </div>
     <input type="hidden" name="path" value="admin">
     <input type="hidden" name="class" value="edit_slider">
-    <button type="submit" class="btn btn-primary">valider</button>
+    <button type="submit" class="btn btn-primary">Mettre à jour</button>
 </form>

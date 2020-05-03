@@ -85,6 +85,23 @@
                     
                     self::deleteSlider($post,$homeManager);
                 break;
+                case 'add_banner':
+                    
+                    $homeManager = new HomeEntity();
+                    self::addBanner($post,$homeManager);
+                break;
+                case 'edit_banner':
+                    
+                    $homeManager = new HomeEntity();
+                    
+                    self::editBanner($post,$homeManager);
+                break;
+                case 'delete_banner':
+                    
+                    $homeManager = new HomeEntity();
+                    
+                    self::deleteBanner($post,$homeManager);
+                break;
                 
                 default:
                 
@@ -123,18 +140,22 @@
         public function deleteSlider(array $post, HomeEntity $hm)
         {
             
-            $hm->deleteSlider($post['id_slider']);
+            $hm->dropSlider($post['id']);
         }
-        public function addArticle()
+        public function addBanner(array $post, HomeEntity $hm)
         {
-            
+            $hm->insertBanner($post);
         }
         
-        public function editArticle()
+        public function editBanner(array $post, HomeEntity $hm)
+        {
+            $hm->updateBanner($post);
+        }
+        public function deleteBanner(array $post, HomeEntity $hm)
         {
             
+            $hm->dropBanner($post['id']);
         }
-        
         private function addProduct(array $post,ProductEntity $pd):void
         {
             $pd->insertProduct($post);

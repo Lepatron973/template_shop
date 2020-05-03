@@ -6,7 +6,7 @@
             
         </ul>
     </div>
-    <div class="col-4" id="article_list">
+    <div class="col-4" id="banner_list">
         <h2>Liste des articles</h2>
         <ul>
             

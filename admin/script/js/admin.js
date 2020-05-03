@@ -68,20 +68,15 @@ $(function(){
                    ** ajax.
                    */
                     editData(post)
-                    console.log(post)
+                    
                    
                  })
+                 
                  /*
                  ** Insertion des différente valeurs issues de la BDD
                  ** Dans les champs de text pour les pages d'éditions
                  */
-                 $('#form_edit_slider input').each(function(i){
-                   
-                     if (data.homeManager.slider[index][i] != undefined) {
-
-                       $(this).val(data.homeManager.slider[index][i]);
-                    } 
-                })
+                 fullFillEditForm(view,data);
             },
             error: function(error){
                 console.log(error)
@@ -161,8 +156,8 @@ $(function(){
     function delData(e){
         e.preventDefault()
         let post = {};
-        post['class'] = "delete_slider";
-        post['id_slider'] = parseInt($(this).attr('index'))
+        post['class'] = $(this).attr("name")
+        post['id'] = parseInt($(this).attr('index'))
         $.ajax({
 
             url:'index.php',
@@ -182,6 +177,8 @@ $(function(){
          
         
         let slider = data.homeManager.slider;
+        let banner = data.homeManager.banner;
+        
         let i =0;
         $("#slider_list ul").html("");
         
@@ -192,7 +189,22 @@ $(function(){
                     `<li id="liSlider">
                     <a href='' class="mr-4 col-8" name="`+ slider[index].title_slider +`"> "`+ slider[index].title_slider +`"</a>
                     <a href="" class="mr-4 edit col-2" index="`+i+`" name="edit_slider"><i class="fas fa-edit"></i></a>
-                    <a href="" name="del_slider" index="`+slider[index].id_slider+`"><i class="fas fa-trash-alt"></i></a>
+                    <a href="" class="del" name="delete_slider" index="`+slider[index].id_slider+`"><i class="fas fa-trash-alt"></i></a>
+                    </li>`
+                )
+                i++   
+            })
+    
+        }
+        i=0;
+        for(index in banner){
+            
+            $("#banner_list ul").each(function(){
+                $(this).append(
+                    `<li id="liSlider">
+                    <a href='' class="mr-4 col-8" name="`+ banner[index].title_banner +`"> "`+ banner[index].title_banner +`"</a>
+                    <a href="" class="mr-4 edit col-2" index="`+i+`" name="edit_banner"><i class="fas fa-edit"></i></a>
+                    <a href="" class="del" name="delete_banner" index="`+banner[index].id_banner+`"><i class="fas fa-trash-alt"></i></a>
                     </li>`
                 )
                 i++   
@@ -201,9 +213,37 @@ $(function(){
         }
         
         
-        $("#liSlider .edit").on('click',pathLoader)
-        $("#liSlider a[name='del_slider']").on('click',delData)
+        $(".edit").on('click',pathLoader)
+        $(".del").on('click',delData)
 
+    }
+
+    /**
+     * Cette fonction permet de remplir les champs des 
+     * formulaire d'édition selon les différentes vue 
+     * chargé
+     * @param {string} view - vue à charger
+     * @param {object} data - obejet contenant les manager
+     */
+    function fullFillEditForm(view,data){
+
+        let property;
+        switch(view){
+            case 'edit_slider':
+                property = data.homeManager.slider;
+            break;
+            case 'edit_banner':
+                property = data.homeManager.banner;
+            break;
+        }
+        
+        $('.form_edit input').each(function(i){
+            
+            if (property[index][i] != undefined) {
+
+              $(this).val(property[index][i]);
+           } 
+       })
     }
 
 })

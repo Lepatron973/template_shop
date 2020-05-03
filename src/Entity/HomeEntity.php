@@ -49,7 +49,7 @@
             };
         }
 
-        public function deleteSlider($id_slider){
+        public function dropSlider($id_slider){
             $sql = "DELETE FROM slider WHERE id_slider = ?";
             $req = $this->pdo->prepare($sql);
             $req->bindValue(1,$id_slider,\PDO::PARAM_INT);
@@ -61,9 +61,9 @@
         }
 
         public function insertBanner($post){
-            $sql = "INSERT INTO banner (section_banner,title_banner,image_banner, description_banner, subtitle_banner) VALUES (?,?,?,?,?)";
+            $sql = "INSERT INTO banner (section,title_banner,image_banner, description_banner, subtitle_banner) VALUES (?,?,?,?,?)";
             $req = $this->pdo->prepare($sql);
-            $req->bindValue(1,$post['section_banner'],\PDO::PARAM_STR);
+            $req->bindValue(1,$post['section'],\PDO::PARAM_STR);
             $req->bindValue(2,$post['title_banner'],\PDO::PARAM_STR);
             $req->bindValue(3,$post['image_banner'],\PDO::PARAM_STR);
             $req->bindValue(4,$post['description_banner'],\PDO::PARAM_STR);
@@ -78,9 +78,9 @@
 
         public function updateBanner($post):void
         {
-            $sql = "UPDATE banner SET section_banner = ?, title_banner = ?, image_banner = ?, description_banner = ?, subtitle_banner = ? WHERE id_slider = ?";
+            $sql = "UPDATE banner SET section = ?, title_banner = ?, image_banner = ?, description_banner = ?, subtitle_banner = ? WHERE id_banner = ?";
             $req = $this->pdo->prepare($sql);
-            $req->bindValue(1,$post['section_banner'],\PDO::PARAM_STR);
+            $req->bindValue(1,$post['section'],\PDO::PARAM_STR);
             $req->bindValue(2,$post['title_banner'],\PDO::PARAM_STR);
             $req->bindValue(3,$post['image_banner'],\PDO::PARAM_STR);
             $req->bindValue(4,$post['description_banner'],\PDO::PARAM_STR);
@@ -93,7 +93,7 @@
             };
         }
 
-        public function deleteBanner($id_banner){
+        public function dropBanner($id_banner){
             $sql = "DELETE FROM banner WHERE id_banner = ?";
             $req = $this->pdo->prepare($sql);
             $req->bindValue(1,$id_banner,\PDO::PARAM_INT);
