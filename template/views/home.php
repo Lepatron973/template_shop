@@ -27,20 +27,18 @@
 
     <!-- start first article -->
     <section class="first_banner container">
-        <h3 class="text-center">{{Nouveauté}}</h3>
+        <?php foreach($homeManager->banner as $banner){ if($banner['section'] == 'first_banner') {?>
+        <h3 class="text-center"><?= $banner['title_banner'] ?></h3>
         <div class="article_1">
             <article class="overflow-auto d-lg-flex justify-content-between p-4">
-                <img class="col-lg-4" src="https://docs.plans-constructeurs-maisons.fr/MaisonsFranceConfort/2233642/410/308/maison-neuve-a-%C5%93ting-57600--197-500---photo-1.jpg?crop=1&align=Center&valign=Middle" alt="">
-               <p class=" col-lg-8"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut eveniet repellat aut iure ab accusantium similique possimus
-                , mollitia, cum, neque est. Aliquam eius expedita optio, vitae quaerat natus perferendis mollitia.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae vero accusantium iste aliquid voluptate? Id 
-                vel rem odio earum saepe, tempore modi alias porro quas exercitationem, error fugit culpa fuga.
-                Cumque earum repellat deserunt facere autem excepturi sint atque esse animi, sit nostrum natus dolorem 
+                <img class="col-lg-4" src="<?= $banner['image_banner'] ?>" alt="<?= $banner['image_title_banner'] ?>">
+                <p class=" col-lg-8"> 
+                    <?= $banner['description_banner'] ?>
                 </p>
             </article>
             <article></article>
-            
         </div>
+        <?php } } ?>
     </section>
     <!-- end first article -->
 
