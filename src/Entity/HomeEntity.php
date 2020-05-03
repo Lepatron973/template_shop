@@ -61,7 +61,7 @@
         }
 
         public function insertBanner($post){
-            $sql = "INSERT INTO banner (section_banner,title_banner,image_banner, description_banner, subtitle_banner, image_title_banner) VALUES (?,?,?,?,?,?)";
+            $sql = "INSERT INTO banner (section,title_banner,image_banner, description_banner, subtitle_banner, image_title_banner) VALUES (?,?,?,?,?,?)";
             $req = $this->pdo->prepare($sql);
             $req->bindValue(1,$post['section'],\PDO::PARAM_STR);
             $req->bindValue(2,$post['title_banner'],\PDO::PARAM_STR);
@@ -79,7 +79,7 @@
 
         public function updateBanner($post):void
         {
-            $sql = "UPDATE banner SET section_banner = ?, title_banner = ?, image_banner = ?, description_banner = ?, subtitle_banner = ?, image_title_banner = ? WHERE id_slider = ?";
+            $sql = "UPDATE banner SET section = ?, title_banner = ?, image_banner = ?, description_banner = ?, subtitle_banner = ?, image_title_banner = ? WHERE id_banner = ?";
             $req = $this->pdo->prepare($sql);
             $req->bindValue(1,$post['section'],\PDO::PARAM_STR);
             $req->bindValue(2,$post['title_banner'],\PDO::PARAM_STR);

@@ -20,6 +20,10 @@
         <label for=" title_slider">subtitle banner</label>
         <input type="text" name="subtitle_banner" class="form-control">
     </div>
+    <div class="form-group">
+        <label for=" title_slider">image title banner</label>
+        <input type="text" name="image_title_banner" class="form-control">
+    </div>
     <input type="hidden" name="path" value="admin">
     <input type="hidden" name="class" value="edit_banner">
     <button type="submit" class="btn btn-success">Mettre à jour</button>
