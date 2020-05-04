@@ -3,7 +3,7 @@ $(function(){
     loadView();
     
     
-    $("a").on('click',pathLoader)
+    $(".nav-admin").on('click',pathLoader)
 
 
     /**
@@ -76,7 +76,7 @@ $(function(){
                  ** Insertion des différente valeurs issues de la BDD
                  ** Dans les champs de text pour les pages d'éditions
                  */
-                 fullFillEditForm(view,data);
+                 fullFillEditForm(view,data,index);
             },
             error: function(error){
                 console.log(error)
@@ -225,7 +225,7 @@ $(function(){
      * @param {string} view - vue à charger
      * @param {object} data - obejet contenant les manager
      */
-    function fullFillEditForm(view,data){
+    function fullFillEditForm(view,data,index){
 
         let property;
         switch(view){
@@ -236,8 +236,8 @@ $(function(){
                 property = data.homeManager.banner;
             break;
         }
-        
-        $('.form_edit input').each(function(i){
+        console.log(property)
+            $('.form_edit input').each(function(i){
             
             if (property[index][i] != undefined) {
 

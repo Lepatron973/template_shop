@@ -1,8 +1,8 @@
 <?php
     namespace App;
     use App\Controller\HomeController;
-    use Admin\Controller\AdminController;
-    require_once DIR.'/admin/controller/AdminController.php';
+    use App\Controller\ShopController;
+    require_once 'Controller/ShopController.php';
     require 'Controller/HomeController.php';
     
     class Router{

@@ -1,4 +1,4 @@
-<?php ob_start();?>
+<?php ob_start(); $homeController->setPage('home');?>
 <div class="home">
     <!-- start section caroussel -->
     <section id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -44,32 +44,19 @@
 
     <!-- start second article -->
     <section class="second_banner container">
-        <h3 class="text-center">{{Top Tendance}}</h3>
+        <h3 class="text-center"><?= $banner['title_banner'] ?></h3>
         <div class="d-flex flex-wrap justify-content-center mb-3">
+    <?php foreach($homeManager->banner as $banner){ if($banner['section'] == 'second_banner') {?>
             <div class="card col-lg-4 col-sm-8">
-                <div class="card-header"><img src="https://www.maisonseden.com/wp-content/uploads/2019/04/MAISONS_EDEN_EPICEA_jardin-pub.jpg" alt="" class="card-img-top"></div>
+                <div class="card-header"><img src="<?= $banner['image_banner'] ?>" alt="<?= $banner['image_title_banner'] ?>" class="card-img-top"></div>
                 <div class="card-body">
-                    <h5 class="card-title">Villa Bella</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, atque. Inventore iste qui illo ut quam, eos 
-                    excepturi. Repellat, laboriosam quaerat accusantium maiores eius veniam ipsa cumque qui officia? Ad!</p>
+                    <h5 class="card-title"><?= $banner['subtitle_banner'] ?></h5>
+                    <p class="card-text">
+                        <?= $banner['description_banner'] ?>
+                    </p>
                 </div>
             </div>
-            <div class="card col-lg-4 col-sm-8">
-                <div class="card-header"><img src="https://static.wixstatic.com/media/1ae515_c689cc78e0e24defb4b0dbca64e372ed~mv2.jpg" alt="" class="card-img-top"></div>
-                <div class="card-body">
-                    <h5 class="card-title">Lotissement Serpentis</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, atque. Inventore iste qui illo ut quam, eos 
-                    excepturi. Repellat, laboriosam quaerat accusantium maiores eius veniam ipsa cumque qui officia? Ad!</p>
-                </div>
-            </div>
-            <div class="card col-lg-4 col-sm-8">
-                <div class="card-header"><img src="https://www.logivelay.com/wp-content/uploads/2018/09/oxyacantha-vue-1.jpg" alt="" class="card-img-top"></div>
-                <div class="card-body">
-                    <h5 class="card-title">Yana Villa</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, atque. Inventore iste qui illo ut quam, eos 
-                    excepturi. Repellat, laboriosam quaerat accusantium maiores eius veniam ipsa cumque qui officia? Ad!</p>
-                </div>
-            </div>
+         <?php } } ?>
         </div>
     </section>
     <!-- end second article -->
