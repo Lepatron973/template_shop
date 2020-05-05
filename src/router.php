@@ -14,21 +14,21 @@
                 case 'home':
                     HomeController::Home();  
                     break;
-                case 'account':
-                    AccountController::Account();  
-                    break;
+                // case 'account':
+                //     AccountController::Account();  
+                //     break;
                 case 'shop':
                     ShopController::Shop();
                     break;
-                case 'detail':
-                    ShopController::Detail();
-                    break;
+                // case 'detail':
+                //     ShopController::Detail();
+                //     break;
                 case 'admin':
                     header("Location: admin");
                     break;
                 
                 default:
-                    # code...
+                HomeController::Maintenance();
                     break;
             }
         }

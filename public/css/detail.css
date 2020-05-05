@@ -2,6 +2,9 @@
     height: 600px;
     
 }
+.gallery img{
+    height: 100px;;
+}
 
 @media screen and (width: 600px){
     .detail img{

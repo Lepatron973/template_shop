@@ -25,4 +25,11 @@
         {
             return $this->page;
         }
+
+        static function Maintenance(){
+            
+            //$homeManager = new HomeEntity();
+            $homeController = new HomeController();
+            require_once DIR.'/template/views/maintenance.php';
+        }
     }

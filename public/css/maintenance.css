@@ -1,0 +1,17 @@
+img{
+    height: 200px;
+    width: 200px;
+}
+p{
+    font-size: 25px;
+}
+.maintenance{
+    background-image: url("https://cutewallpaper.org/21/animated-wallpapers-gif/Best-57-Animation-Wallpaper-on-HipWallpaper-Animation-.gif");
+    background-size: contain;
+    min-height: 88vh;
+    font-family: Samyak Gujarati;
+}
+
+.git-link{
+    color: coral ;
+}
